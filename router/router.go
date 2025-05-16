@@ -6,15 +6,13 @@ import (
 
 func Initialize() {
 
-	// Inicializa o Router utilizando as configurações Default do Gin
+	// Initialize Router
 	router := gin.Default()
 
-	// Define uma rota GET para o endpoint "/ping"
-	router.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
-	router.Run(":8080") // listen and serve on 0.0.0.0:8080
+	// Initialize Routes
+	initializeRoutes(router)
+
+	// Run the server on port 8080
+	router.Run(":8080") // Listen and serve on 0.0.0.0:8080
 
 }
