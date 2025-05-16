@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/kayquesza/api-go-learning/config"
 	"github.com/kayquesza/api-go-learning/router"
 )
