@@ -6,11 +6,11 @@ import (
 )
 
 var (
-	logger config.Logger
+	logger *config.Logger
 )
 
 func main() {
-	logger = *config.GetLogger("main")
+	logger = config.GetLogger("main")
 
 	// Initialize Configs
 	err := config.Init()

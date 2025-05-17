@@ -1,0 +1,18 @@
+# Binaries
+
+*.exe
+*.dll
+*.se
+*.dylib
+
+# Teste Binary
+
+*.test
+
+# Coverage
+
+*.out
+
+Db folder
+
+db/

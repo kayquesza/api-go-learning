@@ -23,6 +23,7 @@ func NewLogger(prefix string) *Logger {
 		info:    log.New(writer, "INFO: ", logger.Flags()),
 		warning: log.New(writer, "WARNING: ", logger.Flags()),
 		err:     log.New(writer, "ERROR: ", logger.Flags()),
+		writer:  writer,
 	}
 
 }
@@ -44,7 +45,7 @@ func (l *Logger) Error(v ...interface{}) {
 	l.err.Println(v...)
 }
 
-// Create Formatted Logs
+// Create Formatted Enabled Logs
 func (l *Logger) Debugf(format string, v ...interface{}) {
 	l.debug.Printf(format, v...)
 }
