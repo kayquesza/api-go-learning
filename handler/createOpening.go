@@ -7,6 +7,19 @@ import (
 	"github.com/kayquesza/api-go-learning/schemas"
 )
 
+// @BasePath /api/v1
+
+// CreateOpeningHandler godoc
+// @Summary      Create opening
+// @Description  Create a new job opening
+// @Tags         opening
+// @Accept       json
+// @Produce      json
+// @Param        request  body      CreateOpeningRequest  true  "Request body"
+// @Success      200      {object}  CreateOpeningResponse
+// @Failure      400      {object}  ErrorResponse
+// @Failure      500      {object}  ErrorResponse
+// @Router       /opening [post]
 func CreateOpeningHandler(ctx *gin.Context) {
 	request := CreateOpeningRequest{}
 
