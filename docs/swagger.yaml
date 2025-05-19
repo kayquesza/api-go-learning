@@ -22,6 +22,13 @@ definitions:
       message:
         type: string
     type: object
+  handler.DeleteOpeningResponse:
+    properties:
+      data:
+        $ref: '#/definitions/schemas.OpeningResponse'
+      message:
+        type: string
+    type: object
   handler.ErrorResponse:
     properties:
       errorCode:
@@ -60,10 +67,38 @@ info:
   version: "1.0"
 paths:
   /opening:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a new job opening
+      parameters:
+      - description: Opening Identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.DeleteOpeningResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Delete Opening
+      tags:
+      - opening
     post:
       consumes:
       - application/json
-      description: Cria uma nova vaga de emprego
+      description: Create a new job opening
       parameters:
       - description: Request body
         in: body
@@ -86,7 +121,7 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
-      summary: Create a new job opening
+      summary: Create opening
       tags:
       - opening
 swagger: "2.0"

@@ -17,7 +17,7 @@ const docTemplate = `{
     "paths": {
         "/opening": {
             "post": {
-                "description": "Cria uma nova vaga de emprego",
+                "description": "Create a new job opening",
                 "consumes": [
                     "application/json"
                 ],
@@ -27,7 +27,7 @@ const docTemplate = `{
                 "tags": [
                     "opening"
                 ],
-                "summary": "Create a new job opening",
+                "summary": "Create opening",
                 "parameters": [
                     {
                         "description": "Request body",
@@ -54,6 +54,48 @@ const docTemplate = `{
                     },
                     "500": {
                         "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a new job opening",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "opening"
+                ],
+                "summary": "Delete Opening",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Opening Identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.DeleteOpeningResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
                         "schema": {
                             "$ref": "#/definitions/handler.ErrorResponse"
                         }
@@ -87,6 +129,17 @@ const docTemplate = `{
             }
         },
         "handler.CreateOpeningResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.OpeningResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.DeleteOpeningResponse": {
             "type": "object",
             "properties": {
                 "data": {
