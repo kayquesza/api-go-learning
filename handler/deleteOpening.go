@@ -12,7 +12,7 @@ import (
 
 // @Summary      Delete Opening
 // @Description  Delete a new job opening
-// @Tags         opening
+// @Tags         Openings
 // @Accept       json
 // @Produce      json
 // @Param id query string true "Opening Identification"

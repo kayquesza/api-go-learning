@@ -25,7 +25,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "opening"
+                    "Openings"
                 ],
                 "summary": "Show Opening",
                 "parameters": [
@@ -58,6 +58,63 @@ const docTemplate = `{
                     }
                 }
             },
+            "put": {
+                "description": "Update a job opening",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Openings"
+                ],
+                "summary": "Update Openings",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Opening Identification",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "description": "Opening data to Update",
+                        "name": "opening",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.UpdateOpeningRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.UpdateOpeningResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    }
+                }
+            },
             "post": {
                 "description": "Create a new job opening",
                 "consumes": [
@@ -67,7 +124,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "opening"
+                    "Openings"
                 ],
                 "summary": "Create Opening",
                 "parameters": [
@@ -111,7 +168,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "opening"
+                    "Openings"
                 ],
                 "summary": "Delete Opening",
                 "parameters": [
@@ -138,6 +195,35 @@ const docTemplate = `{
                     },
                     "404": {
                         "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/openings": {
+            "get": {
+                "description": "List all job openings",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Openings"
+                ],
+                "summary": "List Openings",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/handler.ListOpeningsResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/handler.ErrorResponse"
                         }
@@ -218,6 +304,40 @@ const docTemplate = `{
             }
         },
         "handler.ShowOpeningResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/schemas.OpeningResponse"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.UpdateOpeningRequest": {
+            "type": "object",
+            "properties": {
+                "company": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "remote": {
+                    "type": "boolean"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "salary": {
+                    "type": "integer"
+                }
+            }
+        },
+        "handler.UpdateOpeningResponse": {
             "type": "object",
             "properties": {
                 "data": {

@@ -12,7 +12,7 @@ import (
 // CreateOpeningHandler godoc
 // @Summary      Create Opening
 // @Description  Create a new job opening
-// @Tags         opening
+// @Tags         Openings
 // @Accept       json
 // @Produce      json
 // @Param        request  body      CreateOpeningRequest  true  "Request body"
