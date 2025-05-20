@@ -36,6 +36,15 @@ definitions:
       message:
         type: string
     type: object
+  handler.ListOpeningsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/schemas.OpeningResponse'
+        type: array
+      message:
+        type: string
+    type: object
   handler.ShowOpeningResponse:
     properties:
       data:
@@ -156,7 +165,7 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
-      summary: Create opening
+      summary: Create Opening
       tags:
       - opening
 swagger: "2.0"

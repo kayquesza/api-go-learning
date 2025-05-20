@@ -69,7 +69,7 @@ const docTemplate = `{
                 "tags": [
                     "opening"
                 ],
-                "summary": "Create opening",
+                "summary": "Create Opening",
                 "parameters": [
                     {
                         "description": "Request body",
@@ -197,6 +197,20 @@ const docTemplate = `{
             "properties": {
                 "errorCode": {
                     "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.ListOpeningsResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/schemas.OpeningResponse"
+                    }
                 },
                 "message": {
                     "type": "string"
