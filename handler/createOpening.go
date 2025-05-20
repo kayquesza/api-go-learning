@@ -10,7 +10,7 @@ import (
 // @BasePath /api/v1
 
 // CreateOpeningHandler godoc
-// @Summary      Create opening
+// @Summary      Create Opening
 // @Description  Create a new job opening
 // @Tags         opening
 // @Accept       json
